@@ -2,17 +2,17 @@
 
    <master bindAddress="${127.0.0.1:master.address}" port="${2103:master.port}"/>
 
-   <benchmark initSize="2" maxSize="${4:slaves}" increment="1">
+   <benchmark initSize="3" maxSize="${9:slaves}" increment="2">
       <DestroyWrapper runOnAllSlaves="true"/>
       <StartCluster staggerSlaveStartup="true" delayAfterFirstSlaveStarts="5000" delayBetweenStartingSlaves = "500"/>
       <ClusterValidation partialReplication="false"/>
-      <Warmup operationCount="1000"/>
+      <Warmup operationCount="100000"/>
       <ClearCluster/>
       <!--
          This will average to 10000 requests per thread, although a work-stealing pattern is used so some threads may
          do more work than others.
        -->
-      <WebSessionBenchmark numberOfRequests="2500" opsCountStatusLog="500" numOfThreads="2"/>
+      <WebSessionBenchmark numberOfRequests="500000" opsCountStatusLog="10000" numOfThreads="20"/>
       <CsvReportGeneration/>
    </benchmark>
 
