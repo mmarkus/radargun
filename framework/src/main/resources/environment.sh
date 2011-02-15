@@ -1,7 +1,6 @@
 #!/bin/sh
 
-
-export JAVA_HOME=/qa/tools/opt/jdk1.6.0_20
+export JAVA_HOME=/home/mmarkus/jdk1.6.0_23
 PATH=$JAVA_HOME/bin:$PATH
 
 BIND_ADDRESS=`/sbin/ifconfig eth1 | grep -v inet6 | grep inet | cut -d':' -f2 | cut -d' ' -f1`
